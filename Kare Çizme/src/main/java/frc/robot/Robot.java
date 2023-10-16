@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.Timer;
 
 public class Robot extends TimedRobot {
 
-  private final WPI_VictorSPX motor1 = new WPI_VictorSPX(1);
-  private final WPI_VictorSPX motor2 = new WPI_VictorSPX(2);
-  private final WPI_VictorSPX motor3 = new WPI_VictorSPX(3);
-  private final WPI_VictorSPX motor4 = new WPI_VictorSPX(4);
+  WPI_VictorSPX driveLeftA = new WPI_VictorSPX(1);
+  WPI_VictorSPX driveLeftB = new WPI_VictorSPX(2);
+  WPI_VictorSPX driveRightA = new WPI_VictorSPX(3);
+  WPI_VictorSPX driveRightB = new WPI_VictorSPX(4);
 
   private final Joystick joy1 = new Joystick(0);
 
@@ -33,15 +33,15 @@ public class Robot extends TimedRobot {
 
     if (time - startTime < 1) {
       if (forwardMotion) {
-        motor1.set(0.6);
-        motor2.set(0.6);
-        motor3.set(-0.6);
-        motor4.set(-0.6);
+        driveLeftA.set(0.6);
+        driveLeftB.set(0.6);
+        driveRightA.set(-0.6);
+        driveRightB.set(-0.6);
       } else {
-        motor1.set(0);
-        motor2.set(0);
-        motor3.set(0);
-        motor4.set(0);
+        driveLeftA.set(0);
+        driveLeftB.set(0);
+        driveRightA.set(0);
+        driveRightB.set(0);
       }
     } else {
       forwardMotion = !forwardMotion;
@@ -52,10 +52,10 @@ public class Robot extends TimedRobot {
     }
 
     if (movementCount >= 4) {
-      motor1.set(0);
-      motor2.set(0);
-      motor3.set(0);
-      motor4.set(0);
+      driveLeftA.set(0);
+      driveLeftB.set(0);
+      driveRightA.set(0);
+      driveRightB.set(0);
     }
   }
 
@@ -71,10 +71,10 @@ public class Robot extends TimedRobot {
     double left = speed + turn;
     double right = speed - turn;
 
-    motor1.set(left);
-    motor2.set(left);
-    motor3.set(-right);
-    motor4.set(-right);
+    driveLeftA.set(left);
+    driveLeftB.set(left);
+    driveRightA.set(left);
+    driveRightB.set(left);
   }
 
   @Override
